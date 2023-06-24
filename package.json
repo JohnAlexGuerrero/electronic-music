@@ -2,7 +2,7 @@
   "name": "electronic-music",
   "version": "0.1.0",
   "private": true,
-  "homepage": "http://JohnAlexGuerrero.github.io/electronic-music",
+  "homepage": "http://johnalexguerrero.github.io/electronic-music",
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
