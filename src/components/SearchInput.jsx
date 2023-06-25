@@ -7,7 +7,7 @@ const SearchInput = ({value, HandleSearchText}) => {
         style={{display:'flex',margin:'1rem' ,border:'1px solid #BBBB', padding:'.1em', borderRadius:'20px', backgroundColor:'#BBBB'}}
     >
         <FaSearch
-            style={{width:'30px', height:'30px', color:'gray', padding:'.5rem'}} 
+          style={{width:'30px', height:'30px', color:'gray', padding:'.5rem'}} 
         />
 
         <input 

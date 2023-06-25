@@ -1,14 +1,12 @@
 import { useState } from 'react'
 
-import backgroundImage from '../assets/images/image_0001.jpg'
 
 const ArtistScreen = () => {
-    const [background, setBackground] = useState(backgroundImage)
 
   return (
     <div
       style={{
-        backgroundImage: `url(${background})`,
+        backgroundImage: `url(${''})`,
         backgroundSize: 'cover',
         backgroundRepeat: 'no-repeat',
         backgroundPosition: 'center',
