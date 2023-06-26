@@ -5,18 +5,20 @@ const BackButton = ({video}) => {
   return (
     <button
         style={{
-            backgroundColor:'transparent',
-            border:'none',
-            display:'flex',
-            justifyContent:'center',
-            alignContent:'center',
-            margin:'1em',
-            cursor:'pointer',
-            width:'50px',
-            height:'50px',
+          backgroundColor:'gray',
+          border:'none',
+          borderRadius:'100%',
+          margin:'1em',
+          cursor:'pointer',
+          width:'35px',
+          height:'35px',
+          position:'absolute',
+          top:'16.8em',
+          left:'12.2rem',
+          zIndex:'1'
         }}
     >
-        <FaBackward style={{width:'25px', height:'25px', color:'white', padding:'.5rem'}} />
+        <FaBackward style={{width:'25px', color:'white'}} />
     </button>
   )
 }

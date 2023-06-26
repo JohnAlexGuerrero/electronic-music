@@ -4,16 +4,16 @@ const Thumbnail = ({video}) => {
   return (
     <div
         style={{
-            width:'150px',  
-
-            padding:'.2em  '
+            width:'100px',  
+            padding:'.2em',
+            // border:'1px solid black'
         }}
     >
         <img 
             src={video.thumbnail} 
             alt={video.title}
             style={{
-                width:'100px',
+                width:'40px',
                 height:'auto', 
                 borderRadius:'5px', 
             }}

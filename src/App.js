@@ -6,6 +6,8 @@ import ImageScreenFull from './assets/images/screenfull_0001.jpg'
 import ImageAlbum from './assets/images/album_0001.jpg'
 
 import ScreenFull from './components/ScreenFull'
+import SearchableVideoList from './components/SearchableVideoList'
+import VideoPlayer from './components/VideoPlayer';
 
 function App() {
   let videos = [
@@ -46,12 +48,40 @@ function App() {
       "screenFull": ImageScreenFull,
       "album":ImageAlbum,
     },
+    {
+      "id":5,
+      "title":'my video',
+      "description":'video description',
+      "thumbnail": ImageThumbnail,
+      "favourite": false,
+      "screenFull": ImageScreenFull,
+      "album":ImageAlbum,
+    },
+    {
+      "id":6,
+      "title":'my video',
+      "description":'video description',
+      "thumbnail": ImageThumbnail,
+      "favourite": false,
+      "screenFull": ImageScreenFull,
+      "album":ImageAlbum,
+    },
+    {
+      "id":7,
+      "title":'only video',
+      "description":'video description',
+      "thumbnail": ImageThumbnail,
+      "favourite": false,
+      "screenFull": ImageScreenFull,
+      "album":ImageAlbum,
+    },
 ]
 
   return (
     <div className="App">
       {/* <SearchableVideoList videos={videos} /> */}
-      <ScreenFull video={videos[0]} />
+      {/* <ScreenFull video={videos[0]} videos={videos}/> */}
+      <VideoPlayer videos={videos} />
     </div>
   );
 }

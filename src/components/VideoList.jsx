@@ -10,7 +10,14 @@ const VideoList = ({videos, emptyHeading}) => {
     }
 
   return (
-    <section style={{padding:'1em'}}>
+    <section 
+      style={{
+        padding:'1em',
+        overflow:'auto',
+        scrollbarColor:'red',
+        height:'250px',
+        border:'1px solid red',
+      }}>
       <h2
         style={{textAlign:'left'}}
       >{heading}</h2>

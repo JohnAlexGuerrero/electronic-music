@@ -15,20 +15,6 @@ const LikeButton = ({video}) => {
         const xInside = x - buttonLeft
         const yInside = y - buttonTop
         console.log(e.target)
-        // const circle = e.target
-        // // circle.style.position = 'absolute'
-        // circle.style.backgroundColor = 'purple'
-        // circle.style.width = '10px'
-        // circle.style.height = '10px'
-        // circle.style.borderRadius = '50%'
-        // circle.style.transform = 'translate(-50%, -50%) scale(0)'
-        // // circle.style.animation = 'scale 0.5s ease-out'
-        // circle.style.top = yInside + 'px'
-        // circle.style.left = xInside + 'px'
-
-        // e.appendChild(circle)
-
-        // setTimeout(() => circle.remove(), 500)
 
         setIsActive(!isActive)
         video.favourite = isActive
@@ -40,21 +26,26 @@ const LikeButton = ({video}) => {
             display:'flex',
             alignItems:'center', 
             cursor:'pointer',
-            width:'35px', 
+            width:'40px',
+            height:'40px',
+            position:'absolute',
+            top:'1.5em',
+            left:'1.5rem', 
             padding:'.5rem',
-            border:'none',
-            backgroundColor:'transparent',
+            border:'1px solid gray',
+            backgroundColor:'gray',
+            borderRadius:'100%'
         }}
         onClick={e => HandleHeart(e)}
     >  
         { isActive ? (
-            <FaHeart 
-                style={{color:'red', fontSize:'30px'}}
+            <FaRegHeart
+                style={{fontSize:'20px', color:'#fff'}}
 
             />
         ):(
-            <FaRegHeart
-                style={{fontSize:'30px', color:'gray'}}
+            <FaHeart
+                style={{fontSize:'20px', color:'#fff'}}
 
             />
         )}

@@ -21,10 +21,16 @@ const SearchableVideoList = ({videos}) => {
     }
 
   return (
-    <>
+    <div
+        style={{
+            width:'auto', 
+            position:'absolute', 
+            right:'0'
+        }}
+    >
         <SearchInput value={searchText} HandleSearchText={HandleSearchText} />
         <VideoList videos={foundVideos} emptyHeading={'No matches for "' + searchText + '"'} />
-    </>
+    </div>
   )
 }
 

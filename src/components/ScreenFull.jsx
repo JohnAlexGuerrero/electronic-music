@@ -1,23 +1,26 @@
 import React from 'react'
 import Wallpaper from './Wallpaper'
 import VideoPlayer from './VideoPlayer'
+import SearchableVideoList from './SearchableVideoList'
 
-const ScreenFull = ({video}) => {
+const ScreenFull = ({video, videos}) => {
     const body = document.body
     body.style.backgroundImage = `url(${video.screenFull})`
 
   return (
     <div
         style={{
-            boxShadow:'0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23)',
+            // backgroundImage:`url(${video.screenFull})`,
             height:'70vh',
             width:'70vw',
             position:'relative',
             overflow:'hidden',
-            backgroundColor:'#BBB',
+            // opacity:'.8',
+            backgroundColor:'rgba(0,0,0)',
         }}
     >
         <Wallpaper video={video} />
+        <SearchableVideoList videos={videos} />
         <VideoPlayer video={video} />
     </div>
   )
