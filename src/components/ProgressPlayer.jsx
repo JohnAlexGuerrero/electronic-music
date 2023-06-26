@@ -1,4 +1,6 @@
 import React from 'react'
+import RepeatButton from './RepeatButton'
+import RetweetButton from './RetweetButton'
 
 const ProgressPlayer = ({video}) => {
   return (
@@ -17,8 +19,8 @@ const ProgressPlayer = ({video}) => {
 ,        }}
     >
         <div style={{
-                width:'300px',
-                flexDirection:'column'
+            width:'300px',
+            flexDirection:'column'
             }}
         >
             <input 
@@ -27,17 +29,26 @@ const ProgressPlayer = ({video}) => {
                 id=""
                 style={{
                     width:'100%',
-                    backgroundColor:'rgb(82, 82, 82)'
+                    backgroundColor:'rgb(82, 82, 82)',
+                    marginTop:'1.5rem'
                 }} 
             />
             <div style={{
                 display:'flex',
-                justifyContent:'space-between'
+                justifyContent:'space-between',
+                alignItems:'center'
             }}>
                 <span style={{
                     color:'lightgray',
                     fontSize:'13px'
                 }}>1:48</span>
+                
+                <div>
+                    <RepeatButton video={video} />
+                    <RetweetButton video={video} />
+                </div>
+
+
                 <span style={{
                     color:'lightgray',
                     fontSize:'13px'

@@ -7,6 +7,7 @@ import LikeButton from './LikeButton'
 import SunButton from './SunButton'
 import AlbumThumbnail from './AlbumThumbnail'
 import ProgressPlayer from './ProgressPlayer'
+import ForwardButton from './ForwardButton'
 
 const VideoPlayer = ({videos}) => {
   let video = videos[0]
@@ -27,6 +28,7 @@ const VideoPlayer = ({videos}) => {
       <AlbumThumbnail video={video} />
       <PlayButton video={video} />
       <BackButton video={video} />
+      <ForwardButton video={video} />
       <p
         style={{
           color:'lightgray',
