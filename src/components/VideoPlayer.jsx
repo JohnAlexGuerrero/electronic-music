@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 
 import PlayButton from './PlayButton'
 import PauseButton from './PauseButton'
@@ -10,23 +10,39 @@ import ProgressPlayer from './ProgressPlayer'
 import ForwardButton from './ForwardButton'
 
 const VideoPlayer = ({videos}) => {
+  const [isActive, setIsActive] = useState(false)
+
   let video = videos[0]
+  const ImageAlbum = require('../assets/images/' + video.album)
+
+  const HandlePlay = ()=>{
+    setIsActive(!isActive)
+  }
+
+  useEffect(()=>{
+    
+  },[])
 
   return (
     <div 
-        style={{
-          // border:'1px solid black',
-          width:'350px',
-          height:'350px',
-          borderRadius:'20px',
-          boxShadow:'0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23)',
-          position:'relative'
-        }}
+      style={{
+        width:'350px',
+        height:'350px',
+        borderRadius:'20px',
+        boxShadow:'0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23)',
+        position:'relative'
+      }}
     >
       <LikeButton video={video} />
       <SunButton video={video} />
-      <AlbumThumbnail video={video} />
-      <PlayButton video={video} />
+      <AlbumThumbnail imageVideo={ImageAlbum} />
+      {isActive ? 
+        (
+          <PauseButton video={video} handle={HandlePlay}  />
+        ):(
+        <PlayButton video={video} handle={HandlePlay} />)
+      }
+
       <BackButton video={video} />
       <ForwardButton video={video} />
       <p
@@ -52,7 +68,7 @@ const VideoPlayer = ({videos}) => {
       >
         {video.title}
       </h2>
-      <ProgressPlayer video={video} />
+      <ProgressPlayer active={isActive} timeVideo={video.time}/>
     </div>
   )
 }

@@ -1,7 +1,7 @@
 import React from 'react'
 import {FaPlay} from 'react-icons/fa'
 
-const PlayButton = ({video}) => {
+const PlayButton = ({video, handle}) => {
   return (
     <button
         style={{
@@ -17,6 +17,7 @@ const PlayButton = ({video}) => {
             left:'9.5rem',
             zIndex:'1'
         }}
+        onClick={handle}
     >
         <FaPlay style={{width:'35px', color:'white'}} />
     </button>

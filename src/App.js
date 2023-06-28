@@ -1,9 +1,6 @@
 // import logo from './logo.svg';
 import './App.css';
 
-import ImageThumbnail from './assets/images/artist_0001.jpg'
-import ImageScreenFull from './assets/images/screenfull_0001.jpg'
-import ImageAlbum from './assets/images/album_0001.jpg'
 
 import ScreenFull from './components/ScreenFull'
 import SearchableVideoList from './components/SearchableVideoList'
@@ -16,66 +13,13 @@ function App() {
       "title":'my video',
       "artist":'martin garrix & dua lipa',
       "description":'video description',
-      "thumbnail": ImageThumbnail,
+      "thumbnail": 'album_0001.jpg',
       "favourite": false,
-      "screenFull": ImageScreenFull,
-      "album":ImageAlbum,
-    },
-    {
-      "id":2,
-      "title":'my video',
-      "description":'video description',
-      "thumbnail": ImageThumbnail,
-      "favourite": false,
-      "screenFull": ImageScreenFull,
-      "album":ImageAlbum,
-    },
-    {
-      "id":3,
-      "title":'my video',
-      "description":'video description',
-      "thumbnail": ImageThumbnail,
-      "favourite": false,
-      "screenFull": ImageScreenFull,
-      "album":ImageAlbum,
-    },
-    {
-      "id":4,
-      "title":'only video',
-      "description":'video description',
-      "thumbnail": ImageThumbnail,
-      "favourite": false,
-      "screenFull": ImageScreenFull,
-      "album":ImageAlbum,
-    },
-    {
-      "id":5,
-      "title":'my video',
-      "description":'video description',
-      "thumbnail": ImageThumbnail,
-      "favourite": false,
-      "screenFull": ImageScreenFull,
-      "album":ImageAlbum,
-    },
-    {
-      "id":6,
-      "title":'my video',
-      "description":'video description',
-      "thumbnail": ImageThumbnail,
-      "favourite": false,
-      "screenFull": ImageScreenFull,
-      "album":ImageAlbum,
-    },
-    {
-      "id":7,
-      "title":'only video',
-      "description":'video description',
-      "thumbnail": ImageThumbnail,
-      "favourite": false,
-      "screenFull": ImageScreenFull,
-      "album":ImageAlbum,
-    },
-]
+      "time": 300,
+      "album":'album_0001.jpg',
+    }
+    
+  ]
 
   return (
     <div className="App">

@@ -1,8 +1,32 @@
-import React from 'react'
+import React, { useState } from 'react'
 import RepeatButton from './RepeatButton'
 import RetweetButton from './RetweetButton'
 
-const ProgressPlayer = ({video}) => {
+const ProgressPlayer = ({active, timeVideo}) => {
+    const [time, setTime] = useState(timeVideo)
+    const [minutes, setMinutes] = useState(0)
+    const [seconds, setSeconds] = useState(0)
+    const [range, setRange] = useState(0)
+
+    let interval = null
+
+    if (active) {
+        interval = setInterval(() => {
+            setSeconds(seconds + 1)
+            setRange(range + 1)
+    
+            if (seconds === 59) {
+                setMinutes(minutes + 1)
+                setSeconds(0)
+            }
+        }, 1000);
+    }
+    
+
+    if (range === time ) {
+        clearInterval(interval)
+    }
+
   return (
     <div
         style={{
@@ -27,6 +51,9 @@ const ProgressPlayer = ({video}) => {
                 type="range" 
                 name="" 
                 id=""
+                min={0}
+                value={range}
+                max={timeVideo}
                 style={{
                     width:'100%',
                     backgroundColor:'rgb(82, 82, 82)',
@@ -41,18 +68,26 @@ const ProgressPlayer = ({video}) => {
                 <span style={{
                     color:'lightgray',
                     fontSize:'13px'
-                }}>1:48</span>
+                }}>
+                    {minutes < 10 ? '0' + minutes : minutes}
+                    :
+                    {seconds < 10 ? '0' + seconds : seconds}
+                </span>
                 
                 <div>
-                    <RepeatButton video={video} />
-                    <RetweetButton video={video} />
+                    <RepeatButton video={{}} />
+                    <RetweetButton video={{}} />
                 </div>
 
 
                 <span style={{
                     color:'lightgray',
                     fontSize:'13px'
-                }}>2:26</span>
+                }}>
+                    {Math.floor(time / 60)}
+                    :
+                    {(time % 60) < 10 ? '0' + (time % 60) : (time % 60)}
+                </span>
             </div>
         </div>
         
