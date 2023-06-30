@@ -1,7 +1,7 @@
 import React from 'react'
 import {FaPause} from 'react-icons/fa'
 
-const PauseButton = ({video, handle}) => {
+const PauseButton = ({video, onClick}) => {
   return (
     <button
       style={{
@@ -17,7 +17,7 @@ const PauseButton = ({video, handle}) => {
         left:'9.5rem',
         zIndex:'1'
     }}
-    onClick={handle}
+    onClick={onClick}
     
     >
       <FaPause style={{width:'35px', color:'white'}} />

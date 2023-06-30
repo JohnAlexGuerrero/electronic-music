@@ -10,18 +10,57 @@ import ProgressPlayer from './ProgressPlayer'
 import ForwardButton from './ForwardButton'
 
 const VideoPlayer = ({videos}) => {
+  const [video, setVideo] = useState({})
+
   const [isActive, setIsActive] = useState(false)
 
-  let video = videos[0]
-  const ImageAlbum = require('../assets/images/' + video.album)
-
   const HandlePlay = ()=>{
-    setIsActive(!isActive)
+    setIsActive(true)
   }
 
-  useEffect(()=>{
-    
-  },[])
+  const HandleStop = (interval)=>{
+    setIsActive(false)
+  }
+
+  const HandleNext = (idVideo) =>{
+    let videoIndex = videos.findIndex(item => item.id === (idVideo + 1))
+
+    if (videoIndex === -1) {
+      idVideo = 0
+    }
+    getVideo(videos, idVideo)
+    HandleStop()
+    HandlePlay()
+  }
+
+  const HandleBackForward = (idVideo) => {
+    let videoIndex = videos.findIndex(item => item.id === (idVideo - 1))
+
+    if (videoIndex === -1) {
+      idVideo = videos.lenght - 1
+    }
+    console.log(idVideo)
+    getVideo(videos, idVideo)
+    HandlePlay()
+  }
+
+  const getVideo = async(list, index) =>{
+    const res = list[index]
+
+    try {
+      const ImageAlbum = require(`../assets/images/${res.album}`)
+      res.album = ImageAlbum
+    } catch (error) {
+      console.error('Error al cargar la imagen:', error);
+    }
+
+    setVideo(res)
+  }
+
+  useEffect(() => {
+    getVideo(videos, 0)
+  }, [])
+
 
   return (
     <div 
@@ -35,16 +74,26 @@ const VideoPlayer = ({videos}) => {
     >
       <LikeButton video={video} />
       <SunButton video={video} />
-      <AlbumThumbnail imageVideo={ImageAlbum} />
+      <AlbumThumbnail video={video} />
+
       {isActive ? 
         (
-          <PauseButton video={video} handle={HandlePlay}  />
+          <PauseButton video={video} onClick={HandleStop}  />
         ):(
-        <PlayButton video={video} handle={HandlePlay} />)
+          <PlayButton video={video} handle={HandlePlay} />
+        )
       }
 
-      <BackButton video={video} />
-      <ForwardButton video={video} />
+      <BackButton 
+        video={video}
+        onClick={() => HandleBackForward(video.id)}
+      />
+
+      <ForwardButton 
+        video={video} 
+        onClick={() =>HandleNext(video.id)} 
+      />
+
       <p
         style={{
           color:'lightgray',
@@ -68,7 +117,12 @@ const VideoPlayer = ({videos}) => {
       >
         {video.title}
       </h2>
-      <ProgressPlayer active={isActive} timeVideo={video.time}/>
+
+      <ProgressPlayer
+        pause={isActive}
+        timeVideo={video.time}
+      />
+
     </div>
   )
 }

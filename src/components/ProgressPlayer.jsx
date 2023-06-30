@@ -1,31 +1,38 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import RepeatButton from './RepeatButton'
 import RetweetButton from './RetweetButton'
 
-const ProgressPlayer = ({active, timeVideo}) => {
-    const [time, setTime] = useState(timeVideo)
+const ProgressPlayer = ({pause, timeVideo}) => {
+    const time = timeVideo
     const [minutes, setMinutes] = useState(0)
     const [seconds, setSeconds] = useState(0)
     const [range, setRange] = useState(0)
 
-    let interval = null
+    useEffect(()=>{
+        let interval = null
 
-    if (active) {
-        interval = setInterval(() => {
-            setSeconds(seconds + 1)
-            setRange(range + 1)
-    
-            if (seconds === 59) {
-                setMinutes(minutes + 1)
-                setSeconds(0)
-            }
-        }, 1000);
-    }
-    
+        const a = ()=>{
+            interval = setInterval(() => {
+                setSeconds(seconds + 1)
+                setRange(range + 1)
+        
+                if (seconds === 59) {
+                    setMinutes(minutes + 1)
+                    setSeconds(0)
+                }
+            }, 1000);
+        }
+        
+        if (pause) {
+            a()
+        }else{
+            clearInterval(interval)
+            setMinutes(0)
+            setSeconds(0)
+        }
 
-    if (range === time ) {
-        clearInterval(interval)
-    }
+    }, [pause])
+
 
   return (
     <div
@@ -40,7 +47,7 @@ const ProgressPlayer = ({active, timeVideo}) => {
             display:'flex',
             alignItems:'center',
             justifyContent:'center'
-,        }}
+        }}
     >
         <div style={{
             width:'300px',
@@ -52,8 +59,8 @@ const ProgressPlayer = ({active, timeVideo}) => {
                 name="" 
                 id=""
                 min={0}
-                value={range}
-                max={timeVideo}
+                value={pause ? range : 0}
+                max={time}
                 style={{
                     width:'100%',
                     backgroundColor:'rgb(82, 82, 82)',

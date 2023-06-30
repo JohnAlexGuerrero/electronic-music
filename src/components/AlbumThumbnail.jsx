@@ -1,10 +1,10 @@
 import React from 'react'
 
-const AlbumThumbnail = ({imageVideo}) => {
+const AlbumThumbnail = ({video}) => {
   return (
     <div
       style={{
-        backgroundImage:`url(${imageVideo})`,
+        backgroundImage:`url(${video.album})`,
         backgroundSize: 'contain',
         backgroundRepeat: 'no-repeat',
         backgroundPosition: 'center',
