@@ -2,8 +2,7 @@
 import './App.css';
 
 
-import ScreenFull from './components/ScreenFull'
-import SearchableVideoList from './components/SearchableVideoList'
+import VideoList from './components/VideoList';
 import VideoPlayer from './components/VideoPlayer';
 
 function App() {
@@ -16,7 +15,12 @@ function App() {
       "thumbnail": 'album_0001.jpg',
       "favourite": false,
       "time": 300,
+      "album_name":'Hibryd Theory',
       "album":'album_0001.jpg',
+      "track":"In_The_Name_Of_Love.MP3",
+      "themeColor":'#A2A3AB',
+      "fontColor":'',
+      "screenColor":'#BABCC4',
     },
     {
       "id":2,
@@ -26,7 +30,12 @@ function App() {
       "thumbnail": 'album_0002.jpg',
       "favourite": false,
       "time": 300,
+      "album_name":'Hibryd Theory',
       "album":'album_0002.jpg',
+      "track":"In_The_Name_Of_Love.MP3",
+      "themeColor":'#BA1A1C',
+      "fontColor":'',
+      "screenColor":'#E01F22',
     },
     {
       "id":3,
@@ -36,27 +45,42 @@ function App() {
       "thumbnail": 'album_0001.jpg',
       "favourite": false,
       "time": 300,
+      "album_name":'Hibryd Theory',
       "album":'album_0003.jpg',
+      "track":"In_The_Name_Of_Love.MP3",
+      "themeColor":'#D4BC73',
+      "fontColor":'',
+      "screenColor":'#EDD281',
     },
     {
       "id":4,
-      "title":'my video four',
-      "artist":'martin garrix & dua lipa',
+      "title":'In The Name Of Love',
+      "artist":'Martin Garrix ft. Bebe Rexha',
       "description":'video description',
-      "thumbnail": 'album_0001.jpg',
+      "thumbnail": 'album_0005.jpg',
       "favourite": false,
       "time": 300,
-      "album":'album_0003.jpg',
+      "album_name":'Hibryd Theory',
+      "album":'album_0005.jpeg',
+      "track":"In_The_Name_Of_Love.MP3",
+      "themeColor":'#5385A8',
+      "fontColor":'',
+      "screenColor":'#5C93BA',
     },
     
   ]
 
   return (
-    <div className="App">
-      {/* <SearchableVideoList videos={videos} /> */}
-      {/* <ScreenFull video={videos[0]} videos={videos}/> */}
+    <section
+      style={{
+        display:'flex',
+        justifyContent:'center',
+        marginTop: '20%',
+      }}
+    >
       <VideoPlayer videos={videos} />
-    </div>
+      <VideoList videos={videos} />
+    </section>
   );
 }
 

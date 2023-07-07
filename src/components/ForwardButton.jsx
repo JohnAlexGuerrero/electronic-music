@@ -6,7 +6,8 @@ const ForwardButton = ({video, onClick}) => {
     <button
       id={video.id} 
       style={{
-        backgroundColor:'gray',
+        backgroundColor: video.themeColor,
+        boxShadow:'0 10px 10px rgba(0, 0, 0, 0.16), 0 5px 9px rgba(0, 0, 0, 0.23)',
         border:'none',
         borderRadius:'100%',
         margin:'1em',

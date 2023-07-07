@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import RepeatButton from './RepeatButton'
 import RetweetButton from './RetweetButton'
 
-const ProgressPlayer = ({pause, timeVideo}) => {
+const ProgressPlayer = ({pause, timeVideo, color}) => {
     const time = timeVideo
     const [minutes, setMinutes] = useState(0)
     const [seconds, setSeconds] = useState(0)
@@ -39,7 +39,7 @@ const ProgressPlayer = ({pause, timeVideo}) => {
         style={{
             width:'350px',
             height:'100px',
-            backgroundColor:'rgba(0, 0, 0, 0.6)',
+            backgroundColor: color,
             borderBottomLeftRadius:'20px',
             borderBottomRightRadius:'20px',
             position:'absolute',
@@ -63,7 +63,7 @@ const ProgressPlayer = ({pause, timeVideo}) => {
                 max={time}
                 style={{
                     width:'100%',
-                    backgroundColor:'rgb(82, 82, 82)',
+                    backgroundColor: color,
                     marginTop:'1.5rem'
                 }} 
             />

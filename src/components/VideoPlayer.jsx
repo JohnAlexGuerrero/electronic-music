@@ -1,26 +1,35 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 
-import PlayButton from './PlayButton'
-import PauseButton from './PauseButton'
+import AudioFile from '../assets/music/In_The_Name_Of_Love.MP3'
+
 import BackButton from './BackButton'
 import LikeButton from './LikeButton'
 import SunButton from './SunButton'
 import AlbumThumbnail from './AlbumThumbnail'
 import ProgressPlayer from './ProgressPlayer'
 import ForwardButton from './ForwardButton'
+import Button from './Button'
+
+
 
 const VideoPlayer = ({videos}) => {
+  const audioRef = useRef()
+  const body = document.querySelector('body')
+
   const [video, setVideo] = useState({})
-
   const [isActive, setIsActive] = useState(false)
+  const [isPause, setIsPause] = useState(false)
 
-  const HandlePlay = ()=>{
-    setIsActive(true)
+  const handlePlay = ()=>{
+    if (isPause) {
+      audioRef.current.pause()
+    }else{
+      audioRef.current.play()
+    }
+
+    setIsPause(!isPause)
   }
 
-  const HandleStop = (interval)=>{
-    setIsActive(false)
-  }
 
   const HandleNext = (idVideo) =>{
     let videoIndex = videos.findIndex(item => item.id === (idVideo + 1))
@@ -29,8 +38,6 @@ const VideoPlayer = ({videos}) => {
       idVideo = 0
     }
     getVideo(videos, idVideo)
-    HandleStop()
-    HandlePlay()
   }
 
   const HandleBackForward = (idVideo) => {
@@ -39,17 +46,28 @@ const VideoPlayer = ({videos}) => {
     if (videoIndex === -1) {
       idVideo = videos.lenght - 1
     }
-    console.log(idVideo)
+
     getVideo(videos, idVideo)
-    HandlePlay()
+  }
+
+  // controla con un click que canciones son favoritas
+  const handleHearFavourite = (id)=> {
+    let video = videos.find(item => item.id === id)
+    video.favourite = !video.favourite
   }
 
   const getVideo = async(list, index) =>{
     const res = list[index]
+    body.style.backgroundColor = res.screenColor
 
     try {
       const ImageAlbum = require(`../assets/images/${res.album}`)
+      //obtener la direccion del archivo del video
+      // const AudioFile = require(`../assets/music/${video.track}`)
       res.album = ImageAlbum
+      console.log(AudioFile)
+      res.track = AudioFile
+      // res.track = TrackUrl
     } catch (error) {
       console.error('Error al cargar la imagen:', error);
     }
@@ -72,17 +90,18 @@ const VideoPlayer = ({videos}) => {
         position:'relative'
       }}
     >
-      <LikeButton video={video} />
-      <SunButton video={video} />
-      <AlbumThumbnail video={video} />
+      <LikeButton video={video} onClick={id => handleHearFavourite(video.id)} />
 
-      {isActive ? 
-        (
-          <PauseButton video={video} onClick={HandleStop}  />
-        ):(
-          <PlayButton video={video} handle={HandlePlay} />
-        )
-      }
+      <SunButton video={video} />
+
+      <AlbumThumbnail video={video} />
+      
+      <audio
+        ref={audioRef} 
+        src={video.track} 
+      />
+
+      <Button onClick={handlePlay} pause={isPause} color={video.themeColor} />
 
       <BackButton 
         video={video}
@@ -90,7 +109,7 @@ const VideoPlayer = ({videos}) => {
       />
 
       <ForwardButton 
-        video={video} 
+        video={video}
         onClick={() =>HandleNext(video.id)} 
       />
 
@@ -121,6 +140,7 @@ const VideoPlayer = ({videos}) => {
       <ProgressPlayer
         pause={isActive}
         timeVideo={video.time}
+        color={video.themeColor}
       />
 
     </div>

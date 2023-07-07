@@ -15,8 +15,8 @@ const SunButton = ({video}) => {
             right:'1.5rem', 
             padding:'.5rem',
             alignContent:'center',
-            border:'1px solid gray',
-            backgroundColor:'gray',
+            border:'none',
+            backgroundColor: video.themeColor,
             borderRadius:'100%'
         }}
     >

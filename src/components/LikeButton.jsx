@@ -1,24 +1,6 @@
-import React, { useState } from 'react'
-import {FaHeart, FaRegHeart} from 'react-icons/fa'
-import '../App.css'
+import {FaHeart} from 'react-icons/fa'
 
-const LikeButton = ({video}) => {
-    const [isActive, setIsActive] = useState(video.favourite)
-
-    const HandleHeart = (e)=>{
-        const x = e.pageX
-        const y = e.pageY
-        
-        const buttonTop = e.target.offsetTop
-        const buttonLeft = e.target.offsetLeft
-
-        const xInside = x - buttonLeft
-        const yInside = y - buttonTop
-        console.log(e.target)
-
-        setIsActive(!isActive)
-        video.favourite = isActive
-    }
+const LikeButton = ({video, onClick}) => {
 
   return (
     <button
@@ -32,25 +14,13 @@ const LikeButton = ({video}) => {
             top:'1.5em',
             left:'1.5rem', 
             padding:'.5rem',
-            border:'1px solid gray',
-            backgroundColor:'gray',
+            border: `1px solid ${video.themeColor}`,
+            backgroundColor: video.themeColor,
             borderRadius:'100%'
         }}
-        onClick={e => HandleHeart(e)}
+        onClick={onClick}
     >  
-        { isActive ? (
-            <FaRegHeart
-                style={{fontSize:'20px', color:'#fff'}}
-
-            />
-        ):(
-            <FaHeart
-                style={{fontSize:'20px', color:'#fff'}}
-
-            />
-        )}
-
-
+        <FaHeart style={{fontSize:'20px', color:`${video.favourite ? "red" : "white"}`}} />
     </button>
   )
 }

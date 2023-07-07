@@ -16,13 +16,35 @@ const VideoList = ({videos, emptyHeading}) => {
         overflow:'auto',
         scrollbarColor:'red',
         height:'250px',
-        border:'1px solid red',
+        marginLeft:'2rem',
+        // border:'1px solid red',
       }}>
       <h2
-        style={{textAlign:'left'}}
-      >{heading}</h2>
+        style={{
+          textAlign:'left',
+          color:'white',
+          margin:'0',
+          fontSize:'30px'
+        }}
+      >
+        {'Linkin Park'}
+      </h2>
+
+      <p
+        style={{
+          color:'#fff',
+          textAlign:'left',
+          margin:'0'
+        }}
+      >
+        Alternative Rock
+      </p>
+
       {videos.map(video => 
-        <Video key={video.id} video={video} />
+        <Video 
+          key={video.id} 
+          video={video}
+        />
       )}
     </section>
   )
